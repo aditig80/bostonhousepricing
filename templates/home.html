@@ -1,5 +1,103 @@
-<h1>
-Welcome to Our Website!<br><br>
-Explore our features and services.<br><br>
-Learn more about what we offer and how we can help you.
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>California Housing Price Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 20px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>California Housing Price Predictor</h1>
+
+  <form id="predictForm" action="{{ url_for('predict') }}" method="post">
+    <label for="MedInc">Median Income</label>
+    <input type="number" step="any" id="MedInc" name="MedInc" required>
+
+    <label for="HouseAge">House Age</label>
+    <input type="number" step="any" id="HouseAge" name="HouseAge" required>
+
+    <label for="AveRooms">Average Rooms</label>
+    <input type="number" step="any" id="AveRooms" name="AveRooms" required>
+
+    <label for="AveBedrms">Average Bedrooms</label>
+    <input type="number" step="any" id="AveBedrms" name="AveBedrms" required>
+
+    <label for="Population">Population</label>
+    <input type="number" step="any" id="Population" name="Population" required>
+
+    <label for="AveOccup">Average Occupancy</label>
+    <input type="number" step="any" id="AveOccup" name="AveOccup" required>
+
+    <label for="Latitude">Latitude</label>
+    <input type="number" step="any" id="Latitude" name="Latitude" required>
+
+    <label for="Longitude">Longitude</label>
+    <input type="number" step="any" id="Longitude" name="Longitude" required>
+
+     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  </form>
+
+  <div id="result"> {{prediction_text}}</div>
+
+  
+
+</body>
+</html>
